@@ -5,6 +5,7 @@ import QuoiNathanCommande from '../commandes/nathanQuoiCommande.js'
 import LocateCommande from '../commandes/locateCommande.js'
 import RouletteCommande from "../commandes/rouletteCommande.js";
 import PauseCommande from "../commandes/pauseCommande.js";
+import PresentationCommande from "../commandes/presentationCommande.js";
 import {config} from "dotenv";
 import fs from 'fs';
 
@@ -20,7 +21,8 @@ class CommandHandler {
             QuoiNathanCommande,
             LocateCommande,
             RouletteCommande,
-            PauseCommande
+            PauseCommande,
+            PresentationCommande
         ];
     }
 
@@ -32,7 +34,8 @@ class CommandHandler {
             'quoi-nathan': this.handleQuoiNathanCommand,
             'locate': this.handleLocateCommand,
             'roulette-russe': this.handleRouletteCommand,
-            'pause' : this.handlePauseCommand
+            'pause' : this.handlePauseCommand,
+            'presentation' : this.handlePresentation
         };
 
         const handler = commandHandlers[interaction.commandName];
@@ -41,12 +44,25 @@ class CommandHandler {
         }
     }
 
+    handlePresentation = async (interaction) => {
+        const presentationMessage = "Bonjour, je suis votre bot Discord ! 🤖 Je suis ici pour rendre votre expérience" +
+            " sur ce serveur plus agréable et amusante ( et surout parceque Lyna a fait son interessante mais bref).\n\n " +
+            "<> Voici quelques-unes des choses que je peux faire :\n\n" +
+            "- Je peux vous aider à tourver les salons et document. 🧭\n" +
+            "- Je peux vous donner l'envie de faire une pause. 😄\n" +
+            "- Je peux lancer des défis amusants pour rendre votre journée plus intéressante. 🎲\n" +
+            "- Et bien plus encore ! 🤗\n\n" +
+            "N'hésitez pas à me demander de l'aide si vous voulez en savoir plus sur ce que je " +
+            "peux faire. Je suis là pour vous aider 😉";
+
+        await interaction.reply(presentationMessage);
+    }
     handleQuoiCommand = async (interaction) => {
         await interaction.reply('Coube 😈');
     }
 
     handleQuoiNathanCommand = async (interaction) => {
-        await interaction.reply('T\'es mon QuoiCouBaka, t\'es mon QuoiCouChou, t\'es mon QuoiCouSucreAuSucre 🤤');
+        await interaction.reply('T\'es mon QuoiCouBaka (❁´◡`❁), t\'es mon QuoiCouChou 😍, t\'es mon QuoiCouSucreAuSucre 🤤');
     }
 
     handleRouletteCommand = async (interaction) => {
