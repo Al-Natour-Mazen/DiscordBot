@@ -8,7 +8,9 @@ config();
 const TOKEN =  process.env.DISCORD_BOT_TOKEN_ACCESS;
 
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const client = new Client({
+    intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers]
+});
 const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_BOT_TOKEN_ACCESS);
 
 const commandHandler = new CommandHandler(rest);

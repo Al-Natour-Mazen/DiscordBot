@@ -3,7 +3,10 @@ import {REST, Routes} from 'discord.js';
 import QuoiCouCommande from '../commandes/quoiCommande.js'
 import QuoiNathanCommande from '../commandes/nathanQuoiCommande.js'
 import LocateCommande from '../commandes/locateCommande.js'
+import RouletteCommande from "../commandes/rouletteCommande.js";
 import {config} from "dotenv";
+import fs from 'fs';
+
 
 config();
 
@@ -14,7 +17,8 @@ class CommandHandler {
         this.commands = [
             QuoiCouCommande,
             QuoiNathanCommande,
-            LocateCommande
+            LocateCommande,
+            RouletteCommande
         ];
     }
 
@@ -24,7 +28,8 @@ class CommandHandler {
         const commandHandlers = {
             'quoi': this.handleQuoiCommand,
             'quoi-nathan': this.handleQuoiNathanCommand,
-            'locate': this.handleLocateCommand
+            'locate': this.handleLocateCommand,
+            'roulette-russe': this.handleRouletteCommand
         };
 
         const handler = commandHandlers[interaction.commandName];
@@ -41,11 +46,31 @@ class CommandHandler {
         await interaction.reply('T\'es mon QuoiCouBaka, t\'es mon QuoiCouChou, t\'es mon QuoiCouSucreAuSucre 🤤');
     }
 
+    handleRouletteCommand = async (interaction) => {
+        await interaction.reply("La roulette tourne... 🙊");
+        let members = await interaction.guild.members.fetch();
+        members = members.filter(member => !member.user.bot);
+        const memberArray = [...members.values()];
+        const randomMember = memberArray[Math.floor(Math.random() * memberArray.length)];
+
+        // Lire le fichier JSON et choisir un défi au hasard
+        const challenges = JSON.parse(fs.readFileSync('challenges.json', 'utf8'));
+        const randomChallenge = challenges[Math.floor(Math.random() * challenges.length)];
+
+        setTimeout(async () => {
+            await interaction.followUp("La roulette a trouvé quelqu'un... 🫠");
+            setTimeout(async () => {
+                await interaction.followUp(`${randomMember.user.toString()} a été sélectionné 😌`);
+                setTimeout(async () => {
+                    await interaction.followUp(`Ton défi est : ${randomChallenge} 🥵`);
+                }, 2000);
+            }, 2000);
+        }, 2000);
+    }
+
     handleLocateCommand = async (interaction) => {
         const userChoice = interaction.options.getString('choice');
         let response;
-
-        console.log(userChoice)
 
         switch(userChoice) {
             case 'gloss':
@@ -58,10 +83,10 @@ class CommandHandler {
                 response = ' 😁 Les users Stories se trouvent ici : https://discord.com/channels/1154308104440262747/1163147950101364867/1173917754865225809';
                 break;
             case 'expBesoins':
-                response = ' 😁 L\'Expression des Besoins se trouve ici : https://discord.com/channels/1154308104440262747/1163147950101364867/1163374754045104148';
+                response = ' 😁 L\'expression des besoins se trouve ici : https://discord.com/channels/1154308104440262747/1163147950101364867/1163374754045104148';
                 break
             case 'preconce':
-                response = ' 😁 L\'Expression des Besoins se trouve ici : https://discord.com/channels/1154308104440262747/1163147950101364867/1163374754045104148';
+                response = ' 😁 La pré-etude et conecption se trouvent ici : https://discord.com/channels/1154308104440262747/1169664078818578552/1173898046531174400';
                 break
             default:
                 response = 'Choix non reconnu 🥲';
