@@ -4,6 +4,7 @@ import QuoiCouCommande from '../commandes/quoiCommande.js'
 import QuoiNathanCommande from '../commandes/nathanQuoiCommande.js'
 import LocateCommande from '../commandes/locateCommande.js'
 import RouletteCommande from "../commandes/rouletteCommande.js";
+import PauseCommande from "../commandes/pauseCommande.js";
 import {config} from "dotenv";
 import fs from 'fs';
 
@@ -18,7 +19,8 @@ class CommandHandler {
             QuoiCouCommande,
             QuoiNathanCommande,
             LocateCommande,
-            RouletteCommande
+            RouletteCommande,
+            PauseCommande
         ];
     }
 
@@ -29,7 +31,8 @@ class CommandHandler {
             'quoi': this.handleQuoiCommand,
             'quoi-nathan': this.handleQuoiNathanCommand,
             'locate': this.handleLocateCommand,
-            'roulette-russe': this.handleRouletteCommand
+            'roulette-russe': this.handleRouletteCommand,
+            'pause' : this.handlePauseCommand
         };
 
         const handler = commandHandlers[interaction.commandName];
@@ -54,7 +57,7 @@ class CommandHandler {
         const randomMember = memberArray[Math.floor(Math.random() * memberArray.length)];
 
         // Lire le fichier JSON et choisir un défi au hasard
-        const challenges = JSON.parse(fs.readFileSync('challenges.json', 'utf8'));
+        const challenges = JSON.parse(fs.readFileSync('src/assets/challenges.json', 'utf8'));
         const randomChallenge = challenges[Math.floor(Math.random() * challenges.length)];
 
         setTimeout(async () => {
@@ -66,6 +69,13 @@ class CommandHandler {
                 }, 2000);
             }, 2000);
         }, 2000);
+    }
+
+    handlePauseCommand = async (interaction) => {
+        // Lire le fichier JSON et choisir un défi au hasard
+        const PauseFile = JSON.parse(fs.readFileSync('src/assets/pauseMessages.json', 'utf8'));
+        const randomMessage = PauseFile[Math.floor(Math.random() * PauseFile.length)];
+        await interaction.reply(`@everyone, ${randomMessage}`);
     }
 
     handleLocateCommand = async (interaction) => {
