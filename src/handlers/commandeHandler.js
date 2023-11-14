@@ -45,7 +45,7 @@ class CommandHandler {
     }
 
     handlePresentation = async (interaction) => {
-        const presentationMessage = "Bonjour, je suis votre bot Discord ! 🤖 Je suis ici pour rendre votre expérience" +
+        const presentationMessage = "Bonjour @everyone, je suis votre bot Discord ! 🤖 Je suis ici pour rendre votre expérience" +
             " sur ce serveur plus agréable et amusante ( et surout parceque Lyna a fait son interessante mais bref).\n\n " +
             "<> Voici quelques-unes des choses que je peux faire :\n\n" +
             "- Je peux vous aider à tourver les salons et document. 🧭\n" +
