@@ -6,6 +6,9 @@ import LocateCommande from '../commandes/locateCommande.js'
 import RouletteCommande from "../commandes/rouletteCommande.js";
 import PauseCommande from "../commandes/pauseCommande.js";
 import PresentationCommande from "../commandes/presentationCommande.js";
+import LynaCommande from "../commandes/lynaCommande.js";
+import MaitreMamadCommande from "../commandes/maitreMamadCommande.js";
+import MarioCommande from "../commandes/marioCommande.js";
 import {config} from "dotenv";
 import fs from 'fs';
 
@@ -22,7 +25,10 @@ class CommandHandler {
             LocateCommande,
             RouletteCommande,
             PauseCommande,
-            PresentationCommande
+            PresentationCommande,
+            LynaCommande,
+            MaitreMamadCommande,
+            MarioCommande
         ];
     }
 
@@ -35,7 +41,10 @@ class CommandHandler {
             'locate': this.handleLocateCommand,
             'roulette-russe': this.handleRouletteCommand,
             'pause' : this.handlePauseCommand,
-            'presentation' : this.handlePresentation
+            'presentation' : this.handlePresentation,
+            'mais-lyna' : this.handleLynaCommand,
+            'maitre' : this.handleMaitreCommand,
+            'm-m-mariooo' : this.handleMarioCommand
         };
 
         const handler = commandHandlers[interaction.commandName];
@@ -62,7 +71,40 @@ class CommandHandler {
     }
 
     handleQuoiNathanCommand = async (interaction) => {
-        await interaction.reply('T\'es mon QuoiCouBaka (❁´◡`❁), t\'es mon QuoiCouChou 😍, t\'es mon QuoiCouSucreAuSucre 🤤');
+        const member = await interaction.guild.members.fetch('280324992170983424'); // l'id de nathan
+        if (!member) {
+            return interaction.reply('Membre non trouvé');
+        }
+        const user = member.user;
+        await interaction.reply(`T\'es mon QuoiCouBaka (❁\´◡\`❁) ${user} , t\'es mon QuoiCouChou 😍 ${user}, t\'es mon QuoiCouSucreAuSucre 🤤 ${user}`);
+    }
+
+    handleLynaCommand = async (interaction) => {
+        const member = await interaction.guild.members.fetch('757309895430111292'); // l'id de lyna
+        if (!member) {
+            return interaction.reply('Membre non trouvé');
+        }
+        const user = member.user;
+        await interaction.reply(`Je suis ${user} et y a quoi, enfaiteee 🤨`);
+    }
+
+    handleMaitreCommand = async (interaction) => {
+        const member = await interaction.guild.members.fetch('333717460236632065'); // l'id de mamadou
+        if (!member) {
+            return interaction.reply('Membre non trouvé');
+        }
+        const user = member.user;
+        await interaction.reply(`- Que la sagesse et la lumière du ${user} éclairent notre chemin, guidant nos pas avec bienveillance et enseignements précieux 👳\n
+             - inclinez vous et manifestez une vénération physique à ${user} 🧎‍♂️🧎‍♀️`);
+    }
+
+    handleMarioCommand = async (interaction) => {
+        const member = await interaction.guild.members.fetch('259734217905143809'); // l'id de mario
+        if (!member) {
+            return interaction.reply('Membre non trouvé');
+        }
+        const user = member.user;
+        await interaction.reply(`Pourquoi Mario ne fait-il jamais de blagues ? Parce que c'est toujours Luigi qui les raconte et que Mario est trop occupé à sauver la princesse et à manger des champignons géants, It's Mee ${user} 🍄👨‍🔧👻`);
     }
 
     handleRouletteCommand = async (interaction) => {
@@ -91,7 +133,7 @@ class CommandHandler {
         // Lire le fichier JSON et choisir un défi au hasard
         const PauseFile = JSON.parse(fs.readFileSync('src/assets/pauseMessages.json', 'utf8'));
         const randomMessage = PauseFile[Math.floor(Math.random() * PauseFile.length)];
-        await interaction.reply(`@everyone, ${randomMessage}`);
+        await interaction.channel.send(`@everyone, ${randomMessage}`);
     }
 
     handleLocateCommand = async (interaction) => {
