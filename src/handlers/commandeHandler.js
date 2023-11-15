@@ -104,7 +104,7 @@ class CommandHandler {
             return interaction.reply('Membre non trouvé');
         }
         const user = member.user;
-        await interaction.reply(`Pourquoi Mario ne fait-il jamais de blagues ? Parce que c'est toujours Luigi qui les raconte et que Mario est trop occupé à sauver la princesse et à manger des champignons géants, It's Mee ${user} 🍄👨‍🔧👻`);
+        await interaction.reply(`Pourquoi Mario ne fait-il jamais de blagues ? Parce que c'est toujours Luigi qui les raconte et que Mario est occupé à manger des champignons, It's Mee ${user} 🍄👨‍🔧👻`);
     }
 
     handleRouletteCommand = async (interaction) => {
