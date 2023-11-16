@@ -2,7 +2,7 @@
 import {REST, Routes} from 'discord.js';
 import QuoiCouCommande from '../commandes/fun/quoiCommande.js'
 import QuoiNathanCommande from '../commandes/users/nathanQuoiCommande.js';
-import LocateCommande from '../commandes/ useful/locateCommande.js'
+import LocateCommande from '../commandes/ useful/locate/locateCommande.js'
 import RouletteCommande from "../commandes/fun/rouletteCommande.js";
 import PauseCommande from "../commandes/fun/pauseCommande.js";
 import PresentationCommande from "../commandes/ useful/presentationCommande.js";
