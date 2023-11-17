@@ -9,9 +9,15 @@ class RouletteCommand {
             .toJSON();
 
         this.handleCommand = this.handleCommand.bind(this);
+        this.isRunning = false;
     }
 
     async handleCommand(interaction) {
+        if (this.isRunning) { // Vérifie si la commande est en cours d'exécution
+            await interaction.reply({ content: "La roulette-russe est déjà en cours d'exécution, patience ! 😠 Sinon, tu seras le prochain sur la liste ! 👺", ephemeral: true });
+            return;
+        }
+        this.isRunning = true;
         await interaction.reply("La roulette tourne... 🙊");
         let members = await interaction.guild.members.fetch();
         members = members.filter(member => !member.user.bot);
@@ -28,6 +34,7 @@ class RouletteCommand {
                 await interaction.followUp(`${randomMember.user.toString()} a été sélectionné 😌`);
                 setTimeout(async () => {
                     await interaction.followUp(`Ton défi est : ${randomChallenge} 🥵`);
+                    this.isRunning = false;
                 }, 2000);
             }, 2000);
         }, 2000);

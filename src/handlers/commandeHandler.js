@@ -9,6 +9,7 @@ import PresentationCommande from "../commandes/ useful/presentationCommande.js";
 import LynaCommande from "../commandes/users/lynaCommande.js";
 import MaitreMamadCommande from "../commandes/users/maitreMamadCommande.js";
 import MarioCommande from "../commandes/users/marioCommande.js";
+import AddNewLocationCommande from "../commandes/ useful/locate/addNewLocationCommande.js";
 import {config} from "dotenv";
 
 
@@ -27,7 +28,8 @@ class CommandHandler {
             PresentationCommande,
             LynaCommande,
             MaitreMamadCommande,
-            MarioCommande
+            MarioCommande,
+            AddNewLocationCommande
         ];
     }
 
@@ -43,7 +45,8 @@ class CommandHandler {
             'presentation' : PresentationCommande.handleCommand,
             'mais-lyna' : LynaCommande.handleCommand,
             'maitre' : MaitreMamadCommande.handleCommand,
-            'm-m-mariooo' : MarioCommande.handleCommand
+            'm-m-mariooo' : MarioCommande.handleCommand,
+            'addnewlocation': AddNewLocationCommande.handleCommand
         };
 
         const handler = commandHandlers[interaction.commandName];
