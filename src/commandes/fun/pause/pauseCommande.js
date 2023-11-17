@@ -13,7 +13,7 @@ class PauseCommand {
 
     async handleCommand(interaction) {
         // Lire le fichier JSON et choisir un défi au hasard
-        const PauseFile = JSON.parse(fs.readFileSync('src/assets/pauseMessages.json', 'utf8'));
+        const PauseFile = JSON.parse(fs.readFileSync('src/commandes/fun/pause/pauseMessages.json', 'utf8'));
         const randomMessage = PauseFile[Math.floor(Math.random() * PauseFile.length)];
         await interaction.channel.send(`@everyone, ${randomMessage}`);
     }

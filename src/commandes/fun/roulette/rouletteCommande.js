@@ -25,7 +25,7 @@ class RouletteCommand {
         const randomMember = memberArray[Math.floor(Math.random() * memberArray.length)];
 
         // Lire le fichier JSON et choisir un défi au hasard
-        const challenges = JSON.parse(fs.readFileSync('src/assets/challenges.json', 'utf8'));
+        const challenges = JSON.parse(fs.readFileSync('src/commandes/fun/roulette/challenges.json', 'utf8'));
         const randomChallenge = challenges[Math.floor(Math.random() * challenges.length)];
 
         setTimeout(async () => {
