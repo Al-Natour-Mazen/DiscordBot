@@ -35,7 +35,7 @@ class ConvocationCommand {
 
         let finalMessage = '';
         for (let i = 0; i < severity; i++) {
-            finalMessage += `<@${user.id}> ${convocationMessage}\n`;
+            finalMessage += `<@${user.id}> est convoque. ${convocationMessage}\n`;
         }
 
         await interaction.reply(finalMessage);
