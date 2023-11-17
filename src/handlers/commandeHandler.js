@@ -2,14 +2,14 @@
 import {REST, Routes} from 'discord.js';
 import QuoiCouCommande from '../commandes/fun/quoiCommande.js'
 import QuoiNathanCommande from '../commandes/users/nathanQuoiCommande.js';
-import LocateCommande from '../commandes/ useful/locate/locateCommande.js'
+import LocateCommande from '../commandes/useful/locate/locateCommande.js'
 import RouletteCommande from "../commandes/fun/roulette/rouletteCommande.js";
 import PauseCommande from "../commandes/fun/pause/pauseCommande.js";
-import PresentationCommande from "../commandes/ useful/presentationCommande.js";
+import PresentationCommande from "../commandes/useful/presentationCommande.js";
 import LynaCommande from "../commandes/users/lynaCommande.js";
 import MaitreMamadCommande from "../commandes/users/maitreMamadCommande.js";
 import MarioCommande from "../commandes/users/marioCommande.js";
-import AddNewLocationCommande from "../commandes/ useful/locate/addNewLocationCommande.js";
+import AddNewLocationCommande from "../commandes/useful/locate/addNewLocationCommande.js";
 import ConvocationCommande from "../commandes/fun/convocation/convocationCommande.js";
 import {config} from "dotenv";
 

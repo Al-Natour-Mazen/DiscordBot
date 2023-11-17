@@ -30,13 +30,13 @@ class AddNewLocationCommand {
         }
 
         // Lire le fichier JSON
-        const locations = JSON.parse(fs.readFileSync('src/commandes/ useful/locate/choices.json', 'utf8'));
+        const locations = JSON.parse(fs.readFileSync('src/commandes/useful/locate/choices.json', 'utf8'));
 
         // Ajouter la nouvelle localisation
         locations[name] = ` 😁 ${name} se trouve ici : ${link}`;
 
         // Écrire le fichier JSON
-        fs.writeFileSync('src/commandes/ useful/locate/choices.json', JSON.stringify(locations, null, 2));
+        fs.writeFileSync('src/commandes/useful/locate/choices.json', JSON.stringify(locations, null, 2));
 
         await interaction.reply({ content:`La localisation du fichier "${name}" a été ajoutée avec succès ! C'est comme si tu venais de trouver un trésor caché dans un vieux grenier, Merci pour ta contribution cher pirate 🏴‍☠️`,ephemeral: true });
     }
