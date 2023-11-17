@@ -5,7 +5,7 @@ class AddNewLocationCommand {
     constructor() {
         this.commandData = new SlashCommandBuilder()
             .setName('addnewlocation')
-            .setDescription('Ajoute un nouveau lien dans la commande locate')
+            .setDescription('Ajoute un nouveau lien d\'un message dans la commande locate')
             .addStringOption(option =>
                 option.setName('name')
                     .setDescription('Le nom de l\'element a ajouter')
@@ -38,7 +38,7 @@ class AddNewLocationCommand {
         // Écrire le fichier JSON
         fs.writeFileSync('src/commandes/ useful/locate/choices.json', JSON.stringify(locations, null, 2));
 
-        await interaction.reply(`La localisation du fichier "${name}" a été ajoutée avec succès ! C'est comme si tu venais de trouver un trésor caché dans un vieux grenier, Merci pour ta contribution pirate 🏴‍☠️`);
+        await interaction.reply({ content:`La localisation du fichier "${name}" a été ajoutée avec succès ! C'est comme si tu venais de trouver un trésor caché dans un vieux grenier, Merci pour ta contribution cher pirate 🏴‍☠️`,ephemeral: true });
     }
 }
 
