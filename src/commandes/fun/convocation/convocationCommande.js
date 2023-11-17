@@ -25,7 +25,7 @@ class ConvocationCommand {
         if (!severity) {
             severity = 1;
         }
-        severity = Math.min(Math.max(severity, 1), 4);
+        severity = Math.min(Math.max(severity, 1), 5);
 
         // Lire le fichier JSON
         const convocationMessages = JSON.parse(fs.readFileSync('src/commandes/fun/convocation/convocationMsgs.json', 'utf8'));
