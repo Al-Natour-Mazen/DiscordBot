@@ -53,7 +53,6 @@ class CommandHandler {
             'addnewlocation': AddNewLocationCommande.handleCommand,
             'convocation': ConvocationCommande.handleCommand,
             'conflit': ConflitCommande.handleCommand
-
         };
 
         const handler = commandHandlers[interaction.commandName];
