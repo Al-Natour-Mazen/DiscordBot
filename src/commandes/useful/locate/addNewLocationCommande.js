@@ -24,7 +24,7 @@ class AddNewLocationCommand {
         const link = interaction.options.getString('link');
 
         // Vérifiez si le lien commence par 'https://discord.com/'
-        if (!link.startsWith('https://discord.com/channels/1154308104440262747/')) {
+        if (!link.startsWith('https://discord.com/channels/')) {
             await interaction.reply({ content: "Erreur : Ce lien est aussi cassé qu'un miroir après 7 ans de malchance ! 😱 Assure-toi qu'il est bon petit malin 😉", ephemeral: true });
             return;
         }

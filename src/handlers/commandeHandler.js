@@ -12,6 +12,7 @@ import MarioCommande from "../commandes/users/marioCommande.js";
 import AddNewLocationCommande from "../commandes/useful/locate/addNewLocationCommande.js";
 import ConvocationCommande from "../commandes/fun/convocation/convocationCommande.js";
 import ConflitCommande from "../commandes/fun/conflit/conflitCommande.js";
+import MazenCommande from "../commandes/users/mazenCommande.js";
 import {config} from "dotenv";
 
 
@@ -33,7 +34,8 @@ class CommandHandler {
             MarioCommande,
             AddNewLocationCommande,
             ConvocationCommande,
-            ConflitCommande
+            ConflitCommande,
+            MazenCommande
         ];
     }
 
@@ -52,7 +54,8 @@ class CommandHandler {
             'm-m-mariooo' : MarioCommande.handleCommand,
             'addnewlocation': AddNewLocationCommande.handleCommand,
             'convocation': ConvocationCommande.handleCommand,
-            'conflit': ConflitCommande.handleCommand
+            'conflit': ConflitCommande.handleCommand,
+            'mazennn': MazenCommande.handleCommand
         };
 
         const handler = commandHandlers[interaction.commandName];
