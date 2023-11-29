@@ -13,6 +13,7 @@ import AddNewLocationCommande from "../commandes/useful/locate/addNewLocationCom
 import ConvocationCommande from "../commandes/fun/convocation/convocationCommande.js";
 import ConflitCommande from "../commandes/fun/conflit/conflitCommande.js";
 import MazenCommande from "../commandes/users/mazenCommande.js";
+import WalidCommande from "../commandes/users/walidCommande.js";
 import {config} from "dotenv";
 
 
@@ -35,7 +36,8 @@ class CommandHandler {
             AddNewLocationCommande,
             ConvocationCommande,
             ConflitCommande,
-            MazenCommande
+            MazenCommande,
+            WalidCommande
         ];
     }
 
@@ -55,7 +57,8 @@ class CommandHandler {
             'addnewlocation': AddNewLocationCommande.handleCommand,
             'convocation': ConvocationCommande.handleCommand,
             'conflit': ConflitCommande.handleCommand,
-            'mazennn': MazenCommande.handleCommand
+            'mazennn': MazenCommande.handleCommand,
+            'waleed': WalidCommande.handleCommand
         };
 
         const handler = commandHandlers[interaction.commandName];
