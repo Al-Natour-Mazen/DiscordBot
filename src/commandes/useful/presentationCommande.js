@@ -17,7 +17,8 @@ class PresentationCommand {
             "- Je peux vous aider à tourver les salons et document. 🧭\n" +
             "- Je peux vous donner l'envie de faire une pause. 😄\n" +
             "- Je peux lancer des défis amusants pour rendre votre journée plus intéressante. 🎲\n" +
-            "- Et bien plus encore ! 🤗\n\n" +
+            "- Et bien plus encore ! 🤗\n" +
+            "- Retrouvez mon code source ici : https://github.com/Al-Natour-Mazen/DiscordBot ©️\n\n" +
             "N'hésitez pas à me demander de l'aide si vous voulez en savoir plus sur ce que je " +
             "peux faire. Je suis là pour vous aider 😉";
 
