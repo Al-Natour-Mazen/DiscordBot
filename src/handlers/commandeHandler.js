@@ -14,7 +14,8 @@ import ConvocationCommande from "../commandes/fun/convocation/convocationCommand
 import ConflitCommande from "../commandes/fun/conflit/conflitCommande.js";
 import MazenCommande from "../commandes/users/mazenCommande.js";
 import WalidCommande from "../commandes/users/walidCommande.js";
-import SeFaireSoulever from "../commandes/fun/seFaireSoulever/SeFaireSoulever.js";
+import SeFaireSoulever from "../commandes/fun/seFaireSoulever/seFaireSoulever.js";
+import GrosseTours from "../commandes/fun/grosseTours/grosseTours.js";
 import {config} from "dotenv";
 
 
@@ -39,7 +40,8 @@ class CommandHandler {
             ConflitCommande,
             MazenCommande,
             WalidCommande,
-            SeFaireSoulever
+            SeFaireSoulever,
+            GrosseTours
         ];
     }
 
@@ -62,6 +64,7 @@ class CommandHandler {
             'mazennn': MazenCommande.handleCommand,
             'waleed': WalidCommande.handleCommand,
             'y_a_agnes':SeFaireSoulever.handleCommand,
+            'mmmhgrossetours':GrosseTours.handleCommand,
         };
 
         const handler = commandHandlers[interaction.commandName];
